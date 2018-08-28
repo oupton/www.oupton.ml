@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Oliver Upton</title>
+    <description>Senior in ECE at UT Austin, Software Engineer Intern at Microsoft.
+</description>
+    <link>https://www.oupton.ml/</link>
+    <atom:link href="https://www.oupton.ml/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 27 Aug 2018 23:39:19 -0500</pubDate>
+    <lastBuildDate>Mon, 27 Aug 2018 23:39:19 -0500</lastBuildDate>
+    <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>Useful tools for Java Development</title>
+        <description>&lt;p&gt;As a former student of this course, I wanted to share with you some of the other tools I used to perform well.&lt;/p&gt;
+
+&lt;p&gt;My first and foremost recommendation is that you use Git as a version control system for your projects. Git allows you to keep a historical log of all changes made to a project (among many other features), which is helpful when you make a project-breaking change and need to revert! Here is a good tutorial if you are not yet familiar with Git and would like to learn how to use it.&lt;/p&gt;
+
+&lt;p&gt;As students, we are all eligible to use the &lt;a href=&quot;https://education.github.com/pack&quot;&gt;GitHub Starter Pack&lt;/a&gt;, which includes a free premium membership to GitHub with private repositories. If you are going to host your projects on GitHub, it is &lt;strong&gt;mandatory&lt;/strong&gt; that you use private repositories.&lt;/p&gt;
+
+&lt;p&gt;As with any project, it is essential that you thoroughly test your code to ensure it is bug-free. Luckily, there are many libraries in Java that help you do so programmatically, however the most popular is by far JUnit. JUnit allows you to write functions that can call into your project code and ensure that the return values are as expected.&lt;/p&gt;
+
+&lt;p&gt;The return values may then be checked using methods in the &lt;code class=&quot;highlighter-rouge&quot;&gt;Assert&lt;/code&gt; class. The most common methods are &lt;code class=&quot;highlighter-rouge&quot;&gt;Assert.assertEquals(x, y)&lt;/code&gt; which tests if &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt; equals &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;Assert.assertTrue(x)&lt;/code&gt;, which, as the name implies, passes if &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt; is &lt;code class=&quot;highlighter-rouge&quot;&gt;true&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;To demonstrate, here is a simple class:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Solution.java&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    
+    &lt;span class=&quot;cm&quot;&gt;/**
+    * Performs addition on x and y
+    * @param x first operand
+    * @param y second operand
+    * @returns sum of x and y
+    */&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// Pretty obvious bug&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;And it’s respective test case:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// SolutionTest.java&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.junit.*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SolutionTest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Test&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;testAdd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;expected&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;observed&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    
+        &lt;span class=&quot;n&quot;&gt;Assert&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;assertEquals&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expected&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;observed&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// Fails! 4 != 0&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Another tool that helped me organize my projects is Apache Maven. Maven is a platform/IDE-independent Java project format, which can also be exercised through the command line. The main component to a Maven project is the Project-Object-Model file (pom.xml), which describes how to compile, test, and package your project. Here is what the structure of that project may look like:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;oupton@andromeda&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;tree &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+├── pom.xml
+└── src
+    ├── main
+    │   └── java
+    │       └── assignment1
+    │           └── App.java
+    └── &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;
+        └── java
+            └── assignment1
+                └── AppTest.java&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;In a Maven project, all of the project code sits in the &lt;code class=&quot;highlighter-rouge&quot;&gt;src/main/java&lt;/code&gt; tree, whereas your test cases are stored in the &lt;code class=&quot;highlighter-rouge&quot;&gt;src/test/java&lt;/code&gt; tree.&lt;/p&gt;
+
+&lt;p&gt;If you want to test your code after making some changes, run &lt;code class=&quot;highlighter-rouge&quot;&gt;mvn test&lt;/code&gt; at the root directory of the project, and your code will be automatically compiled and the JUnit tests you wrote will be exercised. If there are any issues, the build will fail and will print out the error.&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 27 Aug 2018 22:26:50 -0500</pubDate>
+        <link>https://www.oupton.ml/blog/2018/08/27/ee422c-best-practices.html</link>
+        <guid isPermaLink="true">https://www.oupton.ml/blog/2018/08/27/ee422c-best-practices.html</guid>
+        
+        
+        <category>blog</category>
+        
+      </item>
+    
+      <item>
+        <title>Welcome to EE 422C!</title>
+        <description>&lt;p&gt;Hello and welcome to EE 422C for the Fall 2018 semester, taught by Dr. Vallath Nandakumar. My name is Oliver and I am one of the undergraduate TA’s for the course. Throughtout the semester, I will make a series of blog posts with some best practices that will help you succeed in this course.&lt;/p&gt;
+
+&lt;p&gt;Since the language used to teach this course is Java, our first order of business is to set up your development environment. For this, you will need the Java Development Kit (JDK) and an Integrated Development Environment (IDE).&lt;/p&gt;
+
+&lt;p&gt;For this course, you will need to have the Java JDK version 1.8. Below you will find links on how to install Java JDK 1.8 for your operating system of choice.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.oracle.com/javase/8/docs/technotes/guides/install/mac_jdk.html&quot;&gt;macOS&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://openjdk.java.net/install/&quot;&gt;Linux&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.oracle.com/javase/8/docs/technotes/guides/install/windows_jdk_install.html&quot;&gt;Windows&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;After you’ve installed Java, you should check to make sure that everything is configured correctly. Open up a terminal window (or Command Prompt on Windows) and run the following commands:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;java &lt;span class=&quot;nt&quot;&gt;-version&lt;/span&gt;       &lt;span class=&quot;c&quot;&gt;# Ensure version number is 1.8.*&lt;/span&gt;
+javac &lt;span class=&quot;nt&quot;&gt;-version&lt;/span&gt;      &lt;span class=&quot;c&quot;&gt;# Ensure version number is 1.8.*&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;If your installation of Java was successful, you can now install an IDE. The recommended IDE for this course is Eclipse as it will be used by your instructor, however you can use any of your choosing. Below are some links to IDEs that I enjoy using.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.eclipse.org/downloads/&quot;&gt;Eclipse&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.jetbrains.com/idea/&quot;&gt;IntelliJ IDEA CE&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I hope that this helps you get set up, and I will send out more guides soon to help you with this course. If you encounter difficulties with any of these procedures, then don’t hesitate to reach out to me or any of the TA’s and we will gladly help.&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 27 Aug 2018 22:25:50 -0500</pubDate>
+        <link>https://www.oupton.ml/blog/2018/08/27/welcome-to-ee422c.html</link>
+        <guid isPermaLink="true">https://www.oupton.ml/blog/2018/08/27/welcome-to-ee422c.html</guid>
+        
+        
+        <category>blog</category>
+        
+      </item>
+    
+  </channel>
+</rss>
